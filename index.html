@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lore · Pre-Opening Weekend Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#002B19;
+  --green-mid:#0a4a2a;
+  --green-light:#1a6b3e;
+  --sage:#8aaa80;
+  --bright:#89BB5B;
+  --cream:#F4EFEC;
+  --tan:#E8E0D5;
+  --charcoal:#1c1c1c;
+  --white:#ffffff;
+  --text-dim:rgba(244,239,236,0.55);
+  --text-mid:rgba(244,239,236,0.78);
+  --border:rgba(244,239,236,0.1);
+  --border-mid:rgba(244,239,236,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--green);color:var(--cream);min-height:100vh;overflow-x:hidden}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  padding:3rem 4rem;
+  border-bottom:0.5px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;top:0;right:0;
+  width:55%;height:100%;
+  background:var(--green-mid);
+  clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%);
+  opacity:0.5;
+}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+.logo{font-family:'DM Serif Display',serif;font-size:18px;letter-spacing:0.05em;color:var(--cream)}
+.doc-badge{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);border:0.5px solid var(--border-mid);padding:5px 12px;border-radius:100px}
+.hero-mid{position:relative;z-index:1;padding:4rem 0 2rem}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(48px,7vw,88px);line-height:1.0;color:var(--cream);margin-bottom:2rem}
+.hero-title em{font-style:italic;color:var(--sage)}
+.hero-desc{font-size:15px;color:var(--text-mid);max-width:520px;line-height:1.7;margin-bottom:3rem}
+.hero-dates{display:flex;gap:2rem;flex-wrap:wrap}
+.date-item{display:flex;flex-direction:column;gap:4px}
+.date-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim)}
+.date-val{font-size:16px;font-weight:500;color:var(--cream)}
+.hero-bottom{display:flex;gap:2rem;align-items:center;position:relative;z-index:1;flex-wrap:wrap}
+.stat-pill{background:rgba(244,239,236,0.06);border:0.5px solid var(--border-mid);border-radius:100px;padding:8px 20px;display:flex;gap:10px;align-items:center}
+.stat-pill-num{font-size:18px;font-weight:500;color:var(--cream)}
+.stat-pill-label{font-size:11px;color:var(--text-dim)}
+.scroll-hint{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;border:none;background:none;color:var(--text-dim);font-family:'DM Sans',sans-serif}
+.scroll-hint svg{opacity:0.5}
+
+/* NAV */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--green);
+  border-bottom:0.5px solid var(--border);
+  padding:0 4rem;
+  display:flex;gap:0;overflow-x:auto;
+  scrollbar-width:none;
+}
+.sticky-nav::-webkit-scrollbar{display:none}
+.nav-item{
+  padding:1rem 1.5rem;
+  font-size:12px;letter-spacing:0.08em;
+  color:var(--text-dim);
+  cursor:pointer;border:none;background:none;
+  font-family:'DM Sans',sans-serif;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all 0.2s;
+}
+.nav-item:hover{color:var(--cream)}
+.nav-item.active{color:var(--cream);border-bottom-color:var(--bright)}
+
+/* SECTIONS */
+.section{padding:5rem 4rem;border-bottom:0.5px solid var(--border)}
+.section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:2rem;display:flex;align-items:center;gap:12px}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border)}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,44px);line-height:1.15;color:var(--cream);margin-bottom:1rem}
+.section-sub{font-size:14px;color:var(--text-mid);max-width:600px;line-height:1.7;margin-bottom:3rem}
+
+/* DAY CARDS */
+.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.day-card{background:var(--green);padding:2rem;transition:background 0.2s}
+.day-card:hover{background:var(--green-mid)}
+.day-num{font-size:48px;font-weight:300;color:var(--border-mid);font-family:'DM Serif Display',serif;line-height:1;margin-bottom:1rem}
+.day-date{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--sage);margin-bottom:0.5rem}
+.day-name{font-size:20px;font-weight:500;color:var(--cream);margin-bottom:0.75rem}
+.day-desc{font-size:13px;color:var(--text-mid);line-height:1.6}
+.day-tag{display:inline-block;margin-top:1rem;font-size:10px;padding:3px 10px;border-radius:100px;letter-spacing:0.08em;font-weight:500}
+.tag-fri{background:rgba(185,215,246,0.12);color:#85B7EB}
+.tag-sat{background:rgba(250,199,117,0.12);color:#FAC775}
+.tag-sun{background:rgba(137,187,91,0.15);color:var(--bright)}
+
+/* TIERS */
+.tiers-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.tier-row{display:grid;grid-template-columns:220px 1fr;background:var(--green);transition:background 0.15s}
+.tier-row:hover{background:var(--green-mid)}
+.tier-left{padding:1.75rem 2rem;border-right:0.5px solid var(--border)}
+.tier-right{padding:1.75rem 2rem}
+.tier-badge{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+.tier-name{font-size:17px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.tier-price{font-size:24px;font-weight:500;margin-bottom:2px}
+.tier-range{font-size:11px;color:var(--text-dim)}
+.tier-features{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.feat-tag{font-size:11px;background:rgba(244,239,236,0.07);border:0.5px solid var(--border-mid);border-radius:100px;padding:3px 10px;color:var(--text-mid)}
+.t-presenting .tier-price{color:var(--bright)}
+.t-founding .tier-price{color:#FAC775}
+.t-space .tier-price{color:#85B7EB}
+.t-window .tier-price{color:var(--sage)}
+.t-gift .tier-price{color:#F4C0D1}
+.t-amenity .tier-price{color:var(--text-mid)}
+
+/* SPACES */
+.spaces-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.space-card{background:var(--green);padding:2rem;transition:background 0.15s}
+.space-card:hover{background:var(--green-mid)}
+.space-card.wide{grid-column:1/-1}
+.space-icon-wrap{width:40px;height:40px;border:0.5px solid var(--border-mid);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.space-name{font-size:17px;font-weight:500;color:var(--cream);margin-bottom:8px}
+.space-desc{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:1rem}
+.space-tags{display:flex;flex-wrap:wrap;gap:5px}
+.space-tag{font-size:10px;background:rgba(138,170,128,0.12);color:var(--sage);border:0.5px solid rgba(138,170,128,0.25);border-radius:100px;padding:2px 9px}
+
+/* RUN OF SHOW */
+.ros-tabs{display:flex;gap:6px;margin-bottom:2rem}
+.ros-tab{padding:7px 18px;border-radius:100px;border:0.5px solid var(--border-mid);background:transparent;font-size:12px;cursor:pointer;color:var(--text-dim);font-family:'DM Sans',sans-serif;transition:all 0.15s;letter-spacing:0.04em}
+.ros-tab:hover{border-color:rgba(244,239,236,0.35);color:var(--cream)}
+.ros-tab.active{background:var(--cream);color:var(--green);border-color:var(--cream)}
+.ros-table{width:100%;border-collapse:collapse}
+.ros-head th{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);padding:0 1rem 1rem;text-align:left;font-weight:400;border-bottom:0.5px solid var(--border)}
+.ros-head th:first-child{width:100px;padding-left:0}
+.ros-row td{padding:1rem;border-bottom:0.5px solid var(--border);vertical-align:top;font-size:13px;color:var(--text-mid);line-height:1.5}
+.ros-row td:first-child{padding-left:0;color:var(--text-dim);font-size:11px;font-weight:500;white-space:nowrap;padding-top:1.1rem}
+.ros-row:last-child td{border-bottom:none}
+.ros-event{color:var(--cream);font-size:13px;margin-bottom:5px;line-height:1.4}
+.brand-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin:2px 2px 0 0;font-weight:500}
+.bp-bev{background:rgba(63,122,60,0.25);color:#9FE1CB}
+.bp-food{background:rgba(216,90,48,0.18);color:#F0997B}
+.bp-scent{background:rgba(212,83,126,0.18);color:#ED93B1}
+.bp-amenity{background:rgba(175,169,236,0.15);color:#AFA9EC}
+.bp-wellness{background:rgba(137,187,91,0.15);color:var(--bright)}
+.bp-apparel{background:rgba(56,138,221,0.15);color:#85B7EB}
+.bp-exp{background:rgba(29,158,117,0.15);color:#5DCAA5}
+.bp-pr{background:rgba(239,159,39,0.15);color:#EF9F27}
+
+/* BRANDS */
+.brands-cats{display:flex;flex-direction:column;gap:2.5rem}
+.brand-cat-head{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;padding-bottom:8px;border-bottom:0.5px solid var(--border)}
+.brand-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.brand-card{background:rgba(244,239,236,0.04);border:0.5px solid var(--border);border-radius:10px;padding:1rem 1.25rem;transition:background 0.15s}
+.brand-card:hover{background:rgba(244,239,236,0.07)}
+.brand-card-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.brand-card-role{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:8px}
+
+/* DELIVERABLES */
+.deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.deliv-card{background:var(--green);padding:1.75rem;transition:background 0.15s}
+.deliv-card:hover{background:var(--green-mid)}
+.deliv-tier-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+.deliv-name{font-size:16px;font-weight:500;color:var(--cream);margin-bottom:1rem}
+.deliv-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.deliv-items li{font-size:12px;color:var(--text-mid);display:flex;gap:8px;line-height:1.4}
+.deliv-items li::before{content:'↳';color:var(--sage);flex-shrink:0;font-size:11px;margin-top:1px}
+
+/* FOOTER */
+.footer{padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:var(--text-dim)}
+.footer-note{font-size:11px;color:var(--text-dim);letter-spacing:0.06em}
+
+@media(max-width:800px){
+  .hero,.section,.footer{padding:2.5rem 1.5rem}
+  .sticky-nav{padding:0 1.5rem}
+  .day-grid,.spaces-grid,.deliv-grid{grid-template-columns:1fr}
+  .space-card.wide{grid-column:1}
+  .tier-row{grid-template-columns:1fr}
+  .tier-right{border-top:0.5px solid var(--border)}
+  .hero-title{font-size:42px}
+  .brand-cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+  .brand-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="logo">Lore Bathing Club</div>
+    <div class="doc-badge">Internal · Confidential · Draft v1.0</div>
+  </div>
+  <div class="hero-mid">
+    <div class="hero-eyebrow">Pre-Opening Weekend Strategy</div>
+    <h1 class="hero-title">May 9–11,<br><em>2025</em></h1>
+    <p class="hero-desc">Three days of curated access before the public doors open. Each day a distinct guest profile, every moment owned by a brand that belongs in the space.</p>
+    <div class="hero-dates">
+      <div class="date-item"><div class="date-label">Friday, May 9</div><div class="date-val">Friends &amp; Family</div></div>
+      <div class="date-item"><div class="date-label">Saturday, May 10</div><div class="date-val">VIPs &amp; Celebs</div></div>
+      <div class="date-item"><div class="date-label">Sunday, May 11</div><div class="date-val">Members Only</div></div>
+      <div class="date-item"><div class="date-label">Grand Opening</div><div class="date-val">May 12 →</div></div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="stat-pill"><span class="stat-pill-num">~40</span><span class="stat-pill-label">Sponsorship slots</span></div>
+    <div class="stat-pill"><span class="stat-pill-num">30+</span><span class="stat-pill-label">Partner brands</span></div>
+    <div class="stat-pill"><span class="stat-pill-num">5</span><span class="stat-pill-label">Spaces available</span></div>
+    <div class="stat-pill"><span class="stat-pill-num">6</span><span class="stat-pill-label">Tiers</span></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav" id="main-nav">
+  <button class="nav-item active" onclick="scrollTo('days')">The Three Days</button>
+  <button class="nav-item" onclick="scrollTo('tiers')">Sponsorship Tiers</button>
+  <button class="nav-item" onclick="scrollTo('spaces')">Spaces</button>
+  <button class="nav-item" onclick="scrollTo('ros')">Run of Show</button>
+  <button class="nav-item" onclick="scrollTo('brands')">Brand Allocations</button>
+  <button class="nav-item" onclick="scrollTo('deliverables')">Partner Deliverables</button>
+</nav>
+
+<!-- THREE DAYS -->
+<section class="section" id="days">
+  <div class="section-label">The Weekend</div>
+  <h2 class="section-title">Three days,<br>three guest profiles</h2>
+  <p class="section-sub">Like a restaurant soft opening — controlled access before public doors open. The energy shifts each day, and so should the brand partnerships.</p>
+  <div class="day-grid">
+    <div class="day-card">
+      <div class="day-num">01</div>
+      <div class="day-date">Friday, May 9 · 8am–10pm</div>
+      <div class="day-name">Friends &amp; Family</div>
+      <div class="day-desc">Intimate. Lore's inner circle. Warm, personal, celebratory. Brands here feel like they're in on something before anyone else. Low-key, high-trust energy.</div>
+      <span class="day-tag tag-fri">Intimate access</span>
+    </div>
+    <div class="day-card">
+      <div class="day-num">02</div>
+      <div class="day-date">Saturday, May 10 · 8am–10pm</div>
+      <div class="day-name">VIPs, Celebs &amp; Extended F&amp;F</div>
+      <div class="day-desc">The showcase day. Press, talent, culture figures. Maximum brand visibility and content capture opportunity. Most partnerships should target Saturday.</div>
+      <span class="day-tag tag-sat">Maximum visibility</span>
+    </div>
+    <div class="day-card">
+      <div class="day-num">03</div>
+      <div class="day-date">Sunday, May 11 · 8am–10pm</div>
+      <div class="day-name">Members Only</div>
+      <div class="day-desc">Grand opening tone. The loyal community who've been there from day one. Brands here earn community credibility and strong CRM activation potential.</div>
+      <span class="day-tag tag-sun">Grand Opening day</span>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section" id="tiers">
+  <div class="section-label">Sponsorship Tiers</div>
+  <h2 class="section-title">Six ways to own<br>a moment at Lore</h2>
+  <p class="section-sub">From presenting the entire weekend to donating product for the locker room — every brand gets something real back: exposure, passes, and association with Lore's opening chapter.</p>
+  <div class="tiers-list">
+    <div class="tier-row t-presenting">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 1</div>
+        <div class="tier-name">Presenting Sponsor</div>
+        <div class="tier-price">$15K–$25K</div>
+        <div class="tier-range">Full Weekend</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">"Presented by [Brand]" in all comms</span>
+          <span class="feat-tag">Signage across all spaces, 3 days</span>
+          <span class="feat-tag">Co-branded email × 2</span>
+          <span class="feat-tag">3 × IG feed posts</span>
+          <span class="feat-tag">20 session passes</span>
+          <span class="feat-tag">Branded moment ownership</span>
+          <span class="feat-tag">Product in all gift bags</span>
+          <span class="feat-tag">First right of refusal: Grand Opening season</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-row t-founding">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 2</div>
+        <div class="tier-name">Founding Day Sponsor</div>
+        <div class="tier-price">$8K–$12K</div>
+        <div class="tier-range">Full Day Ownership</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">Own one full day across all spaces</span>
+          <span class="feat-tag">Day-of signage throughout club</span>
+          <span class="feat-tag">Dedicated email to Lore list</span>
+          <span class="feat-tag">1 × IG post + 2 × Stories</span>
+          <span class="feat-tag">12 session passes</span>
+          <span class="feat-tag">Product in gift bags (owned day)</span>
+          <span class="feat-tag">"Founding Partner" designation ongoing</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-row t-space">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 3</div>
+        <div class="tier-name">Space Sponsor</div>
+        <div class="tier-price">$4K–$7K</div>
+        <div class="tier-range">Per Space · Per Day</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">Own one space for a full day</span>
+          <span class="feat-tag">Branded signage + product in space</span>
+          <span class="feat-tag">Mention in day-of email</span>
+          <span class="feat-tag">1 × IG Story</span>
+          <span class="feat-tag">6 session passes</span>
+          <span class="feat-tag">Option: gift bag add-on</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-row t-window">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 4</div>
+        <div class="tier-name">Window Sponsor</div>
+        <div class="tier-price">$1.5K–$3K</div>
+        <div class="tier-range">2-Hour Block</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">Own a 2-hr window in any space</span>
+          <span class="feat-tag">Product, staff, or signage during window</span>
+          <span class="feat-tag">Mention in recap email</span>
+          <span class="feat-tag">1 × IG Story tag</span>
+          <span class="feat-tag">4 session passes</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-row t-gift">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 5</div>
+        <div class="tier-name">Gift Bag Partner</div>
+        <div class="tier-price">$500–$1.5K</div>
+        <div class="tier-range">Or product-in-kind</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">Product in attendee gift bags</span>
+          <span class="feat-tag">Logo on gift bag insert card</span>
+          <span class="feat-tag">Mention in recap email</span>
+          <span class="feat-tag">2 session passes</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-row t-amenity">
+      <div class="tier-left">
+        <div class="tier-badge">Tier 6</div>
+        <div class="tier-name">Amenity Drop</div>
+        <div class="tier-price">Product-in-kind</div>
+        <div class="tier-range">Locker Room Placement</div>
+      </div>
+      <div class="tier-right">
+        <div class="tier-features">
+          <span class="feat-tag">Product in locker room all 3 days</span>
+          <span class="feat-tag">Brand card at placement point</span>
+          <span class="feat-tag">Organic IG Story mention</span>
+          <span class="feat-tag">2 session passes</span>
+          <span class="feat-tag">Consideration for ongoing amenities program</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text-dim);margin-top:1rem;font-style:italic">All tiers negotiable. Bespoke structures available for multi-day or multi-space partners. Session passes are non-expiring.</p>
+</section>
+
+<!-- SPACES -->
+<section class="section" id="spaces">
+  <div class="section-label">The Club</div>
+  <h2 class="section-title">Five spaces,<br>five brand identities</h2>
+  <p class="section-sub">Every space has a distinct atmosphere and a distinct sponsorship character. Match the brand to the moment.</p>
+  <div class="spaces-grid">
+    <div class="space-card">
+      <div class="space-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2C10 2 4 7 4 12a6 6 0 0012 0c0-5-6-10-6-10z" stroke="#89BB5B" stroke-width="1.2" fill="none"/></svg>
+      </div>
+      <div class="space-name">Main Sauna + Aufguss</div>
+      <div class="space-desc">The centerpiece. The Aufguss ceremony — towel-waving with scented water poured on rocks — is a 45-min theatrical event. Two sessions daily. The highest-premium brand window on the schedule.</div>
+      <div class="space-tags"><span class="space-tag">Scent sponsorship</span><span class="space-tag">Ceremony naming</span><span class="space-tag">Towel/robe branding</span><span class="space-tag">Ritual experience</span></div>
+    </div>
+    <div class="space-card">
+      <div class="space-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 14c0-4 3.5-8 7-8s7 4 7 8" stroke="#85B7EB" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M1 14h18" stroke="#85B7EB" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="space-name">Pool Room</div>
+      <div class="space-desc">Cold plunge and hot pool — the contrast therapy heart of Lore. High dwell time, high emotion. Best for hydration, recovery, and movement brands. Content-rich environment.</div>
+      <div class="space-tags"><span class="space-tag">Hydration station</span><span class="space-tag">Recovery product</span><span class="space-tag">Space naming</span><span class="space-tag">Movement sessions</span></div>
+    </div>
+    <div class="space-card">
+      <div class="space-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#AFA9EC" stroke-width="1.2" fill="none"/><circle cx="10" cy="10" r="2.5" stroke="#AFA9EC" stroke-width="1.2" fill="none"/></svg>
+      </div>
+      <div class="space-name">Infrared Suite</div>
+      <div class="space-desc">Quieter, more intimate. Lower temperature, longer sessions. Appeals to the wellness-forward, skin-conscious crowd. Ideal for skin, beauty, and mindfulness brands with a story to tell.</div>
+      <div class="space-tags"><span class="space-tag">Skin &amp; beauty</span><span class="space-tag">2-hour windows</span><span class="space-tag">Meditation audio</span><span class="space-tag">Suite naming</span></div>
+    </div>
+    <div class="space-card">
+      <div class="space-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="10" rx="2" stroke="#ED93B1" stroke-width="1.2" fill="none"/><path d="M7 5V4M13 5V4" stroke="#ED93B1" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="space-name">Locker Room / Changing</div>
+      <div class="space-desc">High-touch, intimate, practical. Where products are actually used and noticed. A 2-hour exclusive turns this into a brand discovery moment unlike any other activation.</div>
+      <div class="space-tags"><span class="space-tag">Amenity drops</span><span class="space-tag">2-hour exclusives</span><span class="space-tag">Grooming</span><span class="space-tag">Skin care station</span></div>
+    </div>
+    <div class="space-card wide">
+      <div class="space-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 8h12M4 8V6a1 1 0 011-1h10a1 1 0 011 1v2M4 8v8a1 1 0 001 1h10a1 1 0 001-1V8" stroke="#FAC775" stroke-width="1.2" fill="none"/><path d="M8 5V3.5M12 5V3.5" stroke="#FAC775" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="space-name">Reception &amp; Café</div>
+      <div class="space-desc">The welcome and recovery moment — where guests arrive, collect gift bags, and unwind. Highest visibility for signage and product. F&amp;B brands dominate here: breakfast, matcha service, juices, supplements. The natural home for the gift bag station and the welcome brand experience.</div>
+      <div class="space-tags"><span class="space-tag">Breakfast sponsor</span><span class="space-tag">Matcha / coffee bar</span><span class="space-tag">Juice bar</span><span class="space-tag">Gift bag station</span><span class="space-tag">Supplement bar</span><span class="space-tag">Full-day F&amp;B</span><span class="space-tag">Welcome table</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RUN OF SHOW -->
+<section class="section" id="ros">
+  <div class="section-label">Run of Show</div>
+  <h2 class="section-title">8am to 10pm,<br>every brand in place</h2>
+  <p class="section-sub">A working run of show for each day. Toggle between days to see how the brand landscape shifts across the weekend.</p>
+  <div class="ros-tabs">
+    <button class="ros-tab active" onclick="showDay('fri',this)">Fri May 9 · F&amp;F</button>
+    <button class="ros-tab" onclick="showDay('sat',this)">Sat May 10 · VIP</button>
+    <button class="ros-tab" onclick="showDay('sun',this)">Sun May 11 · Members</button>
+  </div>
+
+  <div id="ros-fri">
+    <table class="ros-table">
+      <thead class="ros-head"><tr><th>Time</th><th>Café / Reception</th><th>Sauna + Pool</th><th>Infrared / Changing</th></tr></thead>
+      <tbody>
+        <tr class="ros-row"><td>8–10am</td><td><div class="ros-event">Breakfast service opens. Matcha bar setup.</div><span class="brand-pill bp-bev">12 Matcha</span><span class="brand-pill bp-bev">Pressed Juicery</span></td><td><div class="ros-event">Doors open. F&amp;F orientation welcome. Early morning sauna begins.</div></td><td><div class="ros-event">Locker room opens. Amenity setup.</div><span class="brand-pill bp-amenity">Nimbi Razors</span><span class="brand-pill bp-amenity">Herbivore</span></td></tr>
+        <tr class="ros-row"><td>10am–12</td><td><div class="ros-event">Supplement &amp; nutrition bar activates.</div><span class="brand-pill bp-bev">Liquid IV</span><span class="brand-pill bp-wellness">Rho Nutrition</span></td><td><div class="ros-event">First Aufguss ceremony · 11am.</div><span class="brand-pill bp-scent">Tru Fragrance</span></td><td><div class="ros-event">Infrared opens. Skincare products in-room.</div><span class="brand-pill bp-amenity">Futura Skin</span></td></tr>
+        <tr class="ros-row"><td>12–2pm</td><td><div class="ros-event">Lunch service. Light plates. F&amp;F mingling.</div><span class="brand-pill bp-food">Lazy / Plant Based</span></td><td><div class="ros-event">Open bathing. Pool at full capacity.</div></td><td><div class="ros-event">Kiehl's exclusive locker room window.</div><span class="brand-pill bp-amenity">Kiehl's</span></td></tr>
+        <tr class="ros-row"><td>2–4pm</td><td><div class="ros-event">Afternoon snack reset. Functional beverages.</div><span class="brand-pill bp-bev">Drink Key</span><span class="brand-pill bp-food">The Feed</span></td><td><div class="ros-event">Movement moment — stretch &amp; breathwork in pool room.</div><span class="brand-pill bp-wellness">The Class / Taryn Toomey</span></td><td><div class="ros-event">Infrared — 2hr Aesop scent &amp; product window.</div><span class="brand-pill bp-scent">Aesop</span></td></tr>
+        <tr class="ros-row"><td>4–6pm</td><td><div class="ros-event">Gift bag station activates at reception.</div><span class="brand-pill bp-amenity">Nécessaire</span><span class="brand-pill bp-amenity">Frama</span><span class="brand-pill bp-food">Yumi</span></td><td><div class="ros-event">Second Aufguss ceremony · 5pm.</div><span class="brand-pill bp-scent">Non-Fiction</span></td><td><div class="ros-event">Wellness popup. Elix + Sarah Wragge product moment.</div><span class="brand-pill bp-wellness">Elix Wellness</span></td></tr>
+        <tr class="ros-row"><td>6–8pm</td><td><div class="ros-event">Evening wind-down. Herbal teas.</div><span class="brand-pill bp-bev">Autumn Sonata</span></td><td><div class="ros-event">Sofar Sounds ambient live set in pool room.</div><span class="brand-pill bp-exp">Sofar Sounds</span></td><td><div class="ros-event">Jack Henry grooming station in changing.</div><span class="brand-pill bp-amenity">Jack Henry</span></td></tr>
+        <tr class="ros-row"><td>8–10pm</td><td><div class="ros-event">Founders toast. Thank-you remarks. Final drinks.</div></td><td><div class="ros-event">Final open bathing. Late evening sauna.</div></td><td><div class="ros-event">Locker room winds down.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ros-sat" style="display:none">
+    <table class="ros-table">
+      <thead class="ros-head"><tr><th>Time</th><th>Café / Reception</th><th>Sauna + Pool</th><th>Infrared / Changing</th></tr></thead>
+      <tbody>
+        <tr class="ros-row"><td>8–10am</td><td><div class="ros-event">VIP arrival breakfast. Full premium service.</div><span class="brand-pill bp-bev">12 Matcha</span><span class="brand-pill bp-bev">Pressed Juicery</span><span class="brand-pill bp-bev">Drink Key</span></td><td><div class="ros-event">Sauna opens. VIP early-access bathing begins.</div></td><td><div class="ros-event">Full Nécessaire luxury amenity setup.</div><span class="brand-pill bp-amenity">Nécessaire</span><span class="brand-pill bp-amenity">Herbivore</span></td></tr>
+        <tr class="ros-row"><td>10am–12</td><td><div class="ros-event">Tribeca Nutrition wellness bar. ARMY check-in presence.</div><span class="brand-pill bp-wellness">Tribeca Nutrition</span><span class="brand-pill bp-exp">ARMY / Human Race</span></td><td><div class="ros-event">First Aufguss · 11am. Headline ritual. PR + media observe.</div><span class="brand-pill bp-scent">Tru Fragrance</span></td><td><div class="ros-event">Infrared: Non-Fiction scent window.</div><span class="brand-pill bp-scent">Non-Fiction</span></td></tr>
+        <tr class="ros-row"><td>12–2pm</td><td><div class="ros-event">Peak VIP arrivals. Flyfish Club elevated lunch collab.</div><span class="brand-pill bp-food">Flyfish Club</span><span class="brand-pill bp-food">Lazy / Plant Based</span></td><td><div class="ros-event">Peloton breathwork + cold immersion coaching. Content capture.</div><span class="brand-pill bp-wellness">Peloton</span></td><td><div class="ros-event">Kiehl's / Aesop VIP locker room exclusive.</div><span class="brand-pill bp-amenity">Kiehl's</span><span class="brand-pill bp-scent">Aesop</span></td></tr>
+        <tr class="ros-row"><td>2–4pm</td><td><div class="ros-event">Saie beauty gifting station. IM8 nutrition display.</div><span class="brand-pill bp-amenity">Saie</span><span class="brand-pill bp-wellness">IM8</span></td><td><div class="ros-event">Brooks / ON Running / Lululemon movement culture moment.</div><span class="brand-pill bp-apparel">Brooks</span><span class="brand-pill bp-apparel">ON Running</span><span class="brand-pill bp-apparel">Lululemon</span></td><td><div class="ros-event">Elix Wellness + Sarah Wragge infrared pop-up.</div><span class="brand-pill bp-wellness">Elix Wellness</span></td></tr>
+        <tr class="ros-row"><td>4–6pm</td><td><div class="ros-event">VIP gift bag station — biggest bag of the weekend.</div><span class="brand-pill bp-amenity">Nécessaire</span><span class="brand-pill bp-amenity">Frama</span><span class="brand-pill bp-amenity">Drywater</span><span class="brand-pill bp-food">Yumi</span></td><td><div class="ros-event">Second Aufguss · 5pm. Headline experience. Most attended.</div><span class="brand-pill bp-scent">Tru Fragrance</span></td><td><div class="ros-event">Nimbi Razors 2hr men's changing exclusive.</div><span class="brand-pill bp-amenity">Nimbi Razors</span></td></tr>
+        <tr class="ros-row"><td>6–8pm</td><td><div class="ros-event">Evening reception. Antevasin mocktails. Angel Hour activation.</div><span class="brand-pill bp-bev">Antevasin NYC</span><span class="brand-pill bp-exp">Angel Hour</span></td><td><div class="ros-event">Sofar Sounds live artist — centrepiece of the evening.</div><span class="brand-pill bp-exp">Sofar Sounds</span></td><td><div class="ros-event">Jack Henry + Furtuna Skin post-session styling.</div><span class="brand-pill bp-amenity">Jack Henry</span><span class="brand-pill bp-amenity">Furtuna Skin</span></td></tr>
+        <tr class="ros-row"><td>8–10pm</td><td><div class="ros-event">Late evening. Media + VIPs linger. Final content window.</div><span class="brand-pill bp-bev">Autumn Sonata</span></td><td><div class="ros-event">Final sauna + cold plunge. Candlelit night bathing.</div></td><td><div class="ros-event">Locker room winds down.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ros-sun" style="display:none">
+    <table class="ros-table">
+      <thead class="ros-head"><tr><th>Time</th><th>Café / Reception</th><th>Sauna + Pool</th><th>Infrared / Changing</th></tr></thead>
+      <tbody>
+        <tr class="ros-row"><td>8–10am</td><td><div class="ros-event">Members morning welcome. Matcha ritual.</div><span class="brand-pill bp-bev">12 Matcha</span></td><td><div class="ros-event">Early bathers. Meditative opening. Members only — quiet, earned.</div></td><td><div class="ros-event">Drywater hair care exclusive window.</div><span class="brand-pill bp-amenity">Drywater</span></td></tr>
+        <tr class="ros-row"><td>10am–12</td><td><div class="ros-event">Rho Nutrition + Liquid IV supplement bar.</div><span class="brand-pill bp-wellness">Rho Nutrition</span><span class="brand-pill bp-bev">Liquid IV</span></td><td><div class="ros-event">Aufguss · 11am. Members-only ritual. Intimate, ceremonial.</div><span class="brand-pill bp-scent">Non-Fiction</span></td><td><div class="ros-event">Infrared: Futura Skin + Biotyspa recovery window.</div><span class="brand-pill bp-amenity">Futura Skin</span><span class="brand-pill bp-amenity">Biotyspa</span></td></tr>
+        <tr class="ros-row"><td>12–2pm</td><td><div class="ros-event">Lunch. Yumi pop-up. Looni Co display.</div><span class="brand-pill bp-food">Yumi</span><span class="brand-pill bp-wellness">Looni Co</span></td><td><div class="ros-event">Practice Room — breathwork + stretch + contrast therapy flow.</div><span class="brand-pill bp-wellness">Practice Room</span></td><td><div class="ros-event">Saie women's changing product shelf.</div><span class="brand-pill bp-amenity">Saie</span></td></tr>
+        <tr class="ros-row"><td>2–4pm</td><td><div class="ros-event">Afternoon reset. Miir vessels on display.</div><span class="brand-pill bp-amenity">Miir</span></td><td><div class="ros-event">Open bathing. No programming — pure space.</div></td><td><div class="ros-event">Kiehl's final locker room window. Last day exclusivity.</div><span class="brand-pill bp-amenity">Kiehl's</span></td></tr>
+        <tr class="ros-row"><td>4–6pm</td><td><div class="ros-event">Grand Opening gift bag reveal — best bag of the 3 days.</div><span class="brand-pill bp-amenity">Nécessaire</span><span class="brand-pill bp-amenity">Nimbi</span><span class="brand-pill bp-wellness">Elix</span><span class="brand-pill bp-food">The Feed</span></td><td><div class="ros-event">Final Aufguss · 5pm. Grand Opening ceremony. Founder remarks.</div><span class="brand-pill bp-scent">Tru Fragrance</span></td><td><div class="ros-event">Looni Co + Elix women's wellness closing window.</div><span class="brand-pill bp-wellness">Looni Co</span></td></tr>
+        <tr class="ros-row"><td>6–8pm</td><td><div class="ros-event">Grand Opening toast. Community celebration.</div><span class="brand-pill bp-bev">Pressed Juicery</span><span class="brand-pill bp-bev">Antevasin NYC</span></td><td><div class="ros-event">Evening bathing. Candlelit. Grand Opening atmosphere.</div></td><td><div class="ros-event">Jack Henry final grooming station close-out.</div><span class="brand-pill bp-amenity">Jack Henry</span></td></tr>
+        <tr class="ros-row"><td>8–10pm</td><td><div class="ros-event">Final close. Member farewell. Club officially opens tomorrow.</div></td><td><div class="ros-event">Last sessions. Handover to regular ops team.</div></td><td><div class="ros-event">Full reset begins for May 12 public opening.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section" id="brands">
+  <div class="section-label">Brand Allocations</div>
+  <h2 class="section-title">Every brand,<br>in its right place</h2>
+  <p class="section-sub">A suggested allocation across the weekend. Not all brands participate at a paid tier — some donate product, provide passes, or co-create content. The goal is a curated, coherent environment, not a trade show.</p>
+  <div class="brands-cats">
+
+    <div><div class="brand-cat-head">F&amp;B + Beverages</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">12 Matcha</div><div class="brand-card-role">Matcha bar all 3 mornings, 8–11am. Branded cups + signage.</div><span class="brand-pill bp-bev">Window Sponsor × 3</span></div>
+      <div class="brand-card"><div class="brand-card-name">Pressed Juicery</div><div class="brand-card-role">Juice bar Fri + Sun. Gift bags. Closing toast on Sun.</div><span class="brand-pill bp-bev">Window + Gift Bag</span></div>
+      <div class="brand-card"><div class="brand-card-name">Liquid IV</div><div class="brand-card-role">Hydration station Fri + Sun. Sachets in gift bags.</div><span class="brand-pill bp-bev">Gift Bag + Donate</span></div>
+      <div class="brand-card"><div class="brand-card-name">Drink Key</div><div class="brand-card-role">Afternoon beverage window Fri + Sat.</div><span class="brand-pill bp-bev">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Yumi</div><div class="brand-card-role">Nutrition pop-up Sat lunch + Sun. Gift bags all 3 days.</div><span class="brand-pill bp-food">Gift Bag × 3</span></div>
+      <div class="brand-card"><div class="brand-card-name">Flyfish Club</div><div class="brand-card-role">Elevated F&amp;B collab for Sat VIP lunch.</div><span class="brand-pill bp-food">Space Sponsor (Café, Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Lazy / Plant Based</div><div class="brand-card-role">Plant-based food pop-up Fri + Sat lunches.</div><span class="brand-pill bp-food">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Antevasin NYC</div><div class="brand-card-role">Evening mocktail service Sat + Sun 6–8pm.</div><span class="brand-pill bp-bev">Window Sponsor × 2</span></div>
+    </div></div>
+
+    <div><div class="brand-cat-head">Scent &amp; Fragrance</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">Tru Fragrance</div><div class="brand-card-role">Lead Aufguss scent sponsor all 3 days. Naming rights to "Tru × Lore Ceremony."</div><span class="brand-pill bp-scent">Aufguss Sponsor × 3</span></div>
+      <div class="brand-card"><div class="brand-card-name">Non-Fiction</div><div class="brand-card-role">Fri evening Aufguss + Sun members ceremony. Alternate scent pairing.</div><span class="brand-pill bp-scent">Aufguss Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Aesop</div><div class="brand-card-role">Infrared window Fri 2–4pm. Hand care in locker room Sat.</div><span class="brand-pill bp-scent">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Frama</div><div class="brand-card-role">Product in gift bags all 3 days. Possible infrared scenting Sat.</div><span class="brand-pill bp-scent">Gift Bag + Amenity</span></div>
+    </div></div>
+
+    <div><div class="brand-cat-head">Skincare, Beauty &amp; Amenities</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">Kiehl's</div><div class="brand-card-role">2hr exclusive locker room window Fri + Sun. Product throughout weekend.</div><span class="brand-pill bp-amenity">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Nécessaire</div><div class="brand-card-role">Amenity drop all 3 days. VIP gift bags. Key partner brand.</div><span class="brand-pill bp-amenity">Amenity Drop + Gift Bag</span></div>
+      <div class="brand-card"><div class="brand-card-name">Herbivore</div><div class="brand-card-role">Locker room amenity drop Fri + Sat. Facial mist + body oil.</div><span class="brand-pill bp-amenity">Amenity Drop × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Nimbi Razors</div><div class="brand-card-role">Men's changing exclusive 4–6pm Sat. Gift bags Fri.</div><span class="brand-pill bp-amenity">Window + Gift Bag</span></div>
+      <div class="brand-card"><div class="brand-card-name">Saie</div><div class="brand-card-role">Women's changing product shelf Sat + Sun. Reception gifting.</div><span class="brand-pill bp-amenity">Amenity Drop × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Futura Skin</div><div class="brand-card-role">Infrared suite product partner Fri + Sun. Post-heat recovery.</div><span class="brand-pill bp-amenity">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Jack Henry</div><div class="brand-card-role">Men's grooming station all 3 evenings. Clean grooming aesthetic.</div><span class="brand-pill bp-amenity">Amenity Drop × 3</span></div>
+      <div class="brand-card"><div class="brand-card-name">Drywater</div><div class="brand-card-role">Hair care exclusive Sun morning. Product in Sat + Sun gift bags.</div><span class="brand-pill bp-amenity">Window + Gift Bag</span></div>
+      <div class="brand-card"><div class="brand-card-name">Furtuna Skin</div><div class="brand-card-role">Luxury locker room placement Sat evening. VIP gifting.</div><span class="brand-pill bp-amenity">Amenity Drop (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Biotyspa</div><div class="brand-card-role">Infrared recovery product partner Sun.</div><span class="brand-pill bp-amenity">Window Sponsor (Sun)</span></div>
+    </div></div>
+
+    <div><div class="brand-cat-head">Wellness, Nutrition &amp; Movement</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">Peloton</div><div class="brand-card-role">Cold plunge breathwork + movement session Sat. Co-branded content capture.</div><span class="brand-pill bp-wellness">Space Sponsor (Pool, Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Taryn Toomey / The Class</div><div class="brand-card-role">Movement session Fri 2–4pm in pool room. Intimate F&amp;F energy.</div><span class="brand-pill bp-wellness">Window Sponsor (Fri)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Tribeca Nutrition / ABT</div><div class="brand-card-role">Sat wellness bar. Pre-session nutrition protocol.</div><span class="brand-pill bp-wellness">Window Sponsor (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Rho Nutrition</div><div class="brand-card-role">Supplement display + product Fri + Sun. Gift bags.</div><span class="brand-pill bp-wellness">Gift Bag + Café Display</span></div>
+      <div class="brand-card"><div class="brand-card-name">Elix Wellness</div><div class="brand-card-role">Women's wellness activation Fri + Sat infrared. Tinctures in gift bags all 3 days.</div><span class="brand-pill bp-wellness">Window × 2 + Gift Bag</span></div>
+      <div class="brand-card"><div class="brand-card-name">IM8</div><div class="brand-card-role">Supplement brand display Sat. Samples in Sat gift bags.</div><span class="brand-pill bp-wellness">Gift Bag (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Looni Co</div><div class="brand-card-role">Café counter display Sat + Sun. Cycle wellness brand.</div><span class="brand-pill bp-wellness">Amenity Drop × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">Practice Room</div><div class="brand-card-role">Sun movement session in pool room. Members breathwork + stretch.</div><span class="brand-pill bp-wellness">Window Sponsor (Sun)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Sarah Wragge Wellness</div><div class="brand-card-role">Infrared popup Fri + Sat. Functional wellness product + card.</div><span class="brand-pill bp-wellness">Window Sponsor × 2</span></div>
+      <div class="brand-card"><div class="brand-card-name">The Feed</div><div class="brand-card-role">Energy bar / nutrition product in gift bags all 3 days.</div><span class="brand-pill bp-wellness">Gift Bag × 3</span></div>
+    </div></div>
+
+    <div><div class="brand-cat-head">Apparel &amp; Movement Brands</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">Lululemon</div><div class="brand-card-role">Towel + robe collab or gifting. Movement moment Sat.</div><span class="brand-pill bp-apparel">Space Sponsor (Changing, Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">ON Running</div><div class="brand-card-role">Sat movement session co-sponsor. Product gifting.</div><span class="brand-pill bp-apparel">Window Sponsor (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Brooks</div><div class="brand-card-role">Sat group movement co-sponsor. Product placement + gifting.</div><span class="brand-pill bp-apparel">Window Sponsor (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Vivobarefoot</div><div class="brand-card-role">Post-bathing footwear focus. Gift bags or display.</div><span class="brand-pill bp-apparel">Gift Bag + Display</span></div>
+      <div class="brand-card"><div class="brand-card-name">New Balance</div><div class="brand-card-role">Product gifting or display. Possible collab via ARMY network.</div><span class="brand-pill bp-apparel">Gift Bag (Sat)</span></div>
+    </div></div>
+
+    <div><div class="brand-cat-head">Experience, Media &amp; PR Partners</div><div class="brand-cards">
+      <div class="brand-card"><div class="brand-card-name">Sofar Sounds</div><div class="brand-card-role">Live artist Fri + Sat evening in pool room. Lore × Sofar series.</div><span class="brand-pill bp-exp">Experience Partner</span></div>
+      <div class="brand-card"><div class="brand-card-name">Angel Hour (Manny Mohamed)</div><div class="brand-card-role">Sat evening pop-up. Culture moment in reception area.</div><span class="brand-pill bp-exp">Window Sponsor (Sat)</span></div>
+      <div class="brand-card"><div class="brand-card-name">Gia Kuan PR / ARMY / Join Outsiders</div><div class="brand-card-role">PR + community partners. Sat VIP press management.</div><span class="brand-pill bp-pr">PR Partner</span></div>
+      <div class="brand-card"><div class="brand-card-name">Miir</div><div class="brand-card-role">Branded vessels at the café across the weekend.</div><span class="brand-pill bp-amenity">Amenity Partner</span></div>
+      <div class="brand-card"><div class="brand-card-name">Autumn Sonata</div><div class="brand-card-role">Evening wind-down beverage partner Fri + Sat.</div><span class="brand-pill bp-bev">Window Sponsor × 2</span></div>
+    </div></div>
+
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="section" id="deliverables">
+  <div class="section-label">What Partners Get</div>
+  <h2 class="section-title">Every partner<br>gets something real</h2>
+  <p class="section-sub">Clear deliverables at every tier. Exposure, passes, content, and association with Lore's opening chapter.</p>
+  <div class="deliv-grid">
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 1</div>
+      <div class="deliv-name">Presenting Sponsor</div>
+      <ul class="deliv-items">
+        <li>"Presented by [Brand]" in all comms</li>
+        <li>Signage across all spaces, 3 days</li>
+        <li>Co-branded email × 2</li>
+        <li>3 × dedicated IG feed posts</li>
+        <li>6 × Stories across weekend</li>
+        <li>20 session passes</li>
+        <li>Branded moment ownership</li>
+        <li>Product in all gift bags</li>
+        <li>First right of refusal: Grand Opening</li>
+      </ul>
+    </div>
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 2</div>
+      <div class="deliv-name">Founding Day Sponsor</div>
+      <ul class="deliv-items">
+        <li>"Presented by [Brand]" on owned day</li>
+        <li>Signage throughout club (owned day)</li>
+        <li>Dedicated email to Lore list</li>
+        <li>1 × IG post + 2 × Stories</li>
+        <li>12 session passes</li>
+        <li>Product in gift bags (owned day)</li>
+        <li>"Founding Partner" designation ongoing</li>
+      </ul>
+    </div>
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 3</div>
+      <div class="deliv-name">Space Sponsor</div>
+      <ul class="deliv-items">
+        <li>Brand name on space (owned day)</li>
+        <li>Signage within space</li>
+        <li>Mention in day-of attendee email</li>
+        <li>1 × IG Story on day</li>
+        <li>6 session passes</li>
+        <li>Gift bag add-on option</li>
+      </ul>
+    </div>
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 4</div>
+      <div class="deliv-name">Window Sponsor</div>
+      <ul class="deliv-items">
+        <li>Product / presence in space for window</li>
+        <li>Optional: brand rep on floor</li>
+        <li>Mention in recap email</li>
+        <li>1 × IG Story mention</li>
+        <li>4 session passes</li>
+      </ul>
+    </div>
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 5</div>
+      <div class="deliv-name">Gift Bag Partner</div>
+      <ul class="deliv-items">
+        <li>Product in gift bags (selected / all days)</li>
+        <li>Logo on gift bag insert card</li>
+        <li>Mention in recap email</li>
+        <li>2 session passes</li>
+      </ul>
+    </div>
+    <div class="deliv-card">
+      <div class="deliv-tier-label">Tier 6</div>
+      <div class="deliv-name">Amenity Drop</div>
+      <ul class="deliv-items">
+        <li>Product in locker room all 3 days</li>
+        <li>Brand card at placement</li>
+        <li>Organic IG Story mention</li>
+        <li>2 session passes</li>
+        <li>Consideration for ongoing amenities</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;padding:2rem;border:0.5px solid var(--border);border-radius:12px;">
+    <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem">Email cadence for partners</div>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.7">Presenting + Founding sponsors receive a co-branded pre-event announcement and post-event recap to the full Lore CRM list. Space + window sponsors are named in the day-of guest email and recap. Gift bag and amenity partners are credited in the recap only. Lore retains editorial control over all copy. Session passes are non-expiring, valid from May 12 public opening onwards.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Lore Bathing Club</div>
+  <div class="footer-note">Pre-Opening Weekend · May 9–11, 2025 · Internal Strategy Document · Draft v1.0</div>
+</footer>
+
+<script>
+function scrollTo(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function showDay(day,btn){
+  ['fri','sat','sun'].forEach(d=>{
+    document.getElementById('ros-'+d).style.display=d===day?'block':'none';
+  });
+  document.querySelectorAll('.ros-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+const sections=['days','tiers','spaces','ros','brands','deliverables'];
+const navItems=document.querySelectorAll('.nav-item');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-120) current=id;
+  });
+  navItems.forEach((btn,i)=>{
+    btn.classList.toggle('active',sections[i]===current);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
